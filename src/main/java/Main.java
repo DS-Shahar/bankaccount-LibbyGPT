@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
     	Scanner scanner = new Scanner(System.in);
-    	
+    	//BankAccount
         BankAccount bobAccount = new BankAccount(1000, -1000, "Bob");
         BankAccount lisaAccount = new BankAccount(1000, -1000, "Lisa");
 
@@ -22,6 +22,9 @@ public class Main {
         System.out.println("\nTransfer of 1600 from Bob to Lisa: " + (successTransfer ? "Successful" : "Failed"));
         System.out.println(bobAccount);
         System.out.println(lisaAccount);
+        
+        
+        //Rectangle
         
         System.out.print("Enter the length of the rectangle: ");
         int length = scanner.nextInt();
@@ -42,5 +45,24 @@ public class Main {
         System.out.println("Scaled Rectangle: " + rect);
         
         rect.draw();
+        
+        //Circle
+        
+        Circle firstCircle = new Circle(5.0);
+        Circle secondCircle = new Circle(8.0);
+        
+       firstCircle.draw();
+       System.out.println("The first circle area is: " + firstCircle.area());
+       
+       secondCircle.draw();
+       System.out.println("The second circle area is: " + secondCircle.area());
+       
+       
+        
+       
+        
+        
+        
+        
     }
 }
