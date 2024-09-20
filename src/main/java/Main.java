@@ -51,11 +51,13 @@ public class Main {
         Circle firstCircle = new Circle(5.0);
         Circle secondCircle = new Circle(8.0);
         
-       firstCircle.draw();
-       System.out.println("The first circle area is: " + firstCircle.area());
-       
-       secondCircle.draw();
-       System.out.println("The second circle area is: " + secondCircle.area());
+        System.out.println("\nFirst Circle:");
+        firstCircle.draw();
+        System.out.println("The first circle area is: " + firstCircle.area());
+
+        System.out.println("\nSecond Circle:");
+        secondCircle.draw();
+        System.out.println("The second circle area is: " + secondCircle.area());
        
        
         
