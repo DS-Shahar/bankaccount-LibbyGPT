@@ -13,26 +13,32 @@ public class Circle {
 	
 	
 	public double area() {
-		return 2 * Math.PI * this.radius;   
-		
-	}
+        return Math.PI * this.radius * this.radius;  
+    }
 	
 	public void draw() {
-        int diameter = (int) Math.ceil(this.radius * 2);
-        double center = this.radius;
+        int length = (int) Math.ceil(this.radius * 2);
+        int[][] matrix = new int[length][length];
 
-        for (int y = 0; y <= diameter; y++) {
-            for (int x = 0; x <= diameter; x++) {
-                double distance = Math.sqrt(Math.pow(x - center, 2) + Math.pow(y - center, 2));
+        for (int angle = 0; angle < 360; angle++) {
+            double radians = Math.toRadians(angle);
+            int x = (int) (radius + radius * Math.cos(radians));
+            int y = (int) (radius + radius * Math.sin(radians));
 
-                if (Math.abs(distance - this.radius) < 0.5) {
+            if (x >= 0 && x < length && y >= 0 && y < length) {
+                matrix[y][x] = 1;
+            }
+        }
+
+        for (int[] row : matrix) {
+            for (int cell : row) {
+                if (cell == 1) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
                 }
             }
             System.out.println();
-        }
     }
-
+	}
 }
