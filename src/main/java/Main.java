@@ -1,70 +1,37 @@
-package BankAccountPackage;
-
-import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-    	Scanner scanner = new Scanner(System.in);
-    	//BankAccount
-        BankAccount bobAccount = new BankAccount(1000, -1000, "Bob");
-        BankAccount lisaAccount = new BankAccount(1000, -1000, "Lisa");
+        Volcano volcano = new Volcano("Volcano", 10);
+        Random random = new Random();
 
-        System.out.println("Initial Balances:");
-        System.out.println(bobAccount);
-        System.out.println(lisaAccount);
+        System.out.println("Adding measurements:");
+        for (int i = 0; i < 7; i++) {
+            int deg = random.nextInt(2000);
+            boolean result = volcano.add(deg);
+            System.out.println("Added: " + deg + " - Success: " + result);
+        }
 
-        boolean successTransfer = bobAccount.transfer(500, lisaAccount);
-        System.out.println("\nTransfer of 500 from Bob to Lisa: " + (successTransfer ? "Successful" : "Failed"));
-        System.out.println(bobAccount);
-        System.out.println(lisaAccount);
+        volcano.print();
+        
+        System.out.println("\nFixing measurement at index 2 to 1500:");
+        volcano.fix(2, 1500);
+        volcano.print();
 
-        successTransfer = bobAccount.transfer(1600, lisaAccount);
-        System.out.println("\nTransfer of 1600 from Bob to Lisa: " + (successTransfer ? "Successful" : "Failed"));
-        System.out.println(bobAccount);
-        System.out.println(lisaAccount);
-        
-        
-        //Rectangle
-        
-        System.out.print("Enter the length of the rectangle: ");
-        int length = scanner.nextInt();
-        
-        System.out.print("Enter the width of the rectangle: ");
-        int width = scanner.nextInt();
-        
-        Rectangle rect = new Rectangle(length, width);
-        
-        rect.draw();
-        
-        System.out.println("Area: " + rect.calcArea());
-        System.out.println("Perimeter: " + rect.calcPerimeter());
-        System.out.print("Enter the scale factor: ");
-        int scaleFactor = scanner.nextInt();
-        
-        rect.scale(scaleFactor);
-        System.out.println("Scaled Rectangle: " + rect);
-        
-        rect.draw();
-        
-        //Circle
-        
-        Circle firstCircle = new Circle(5.0);
-        Circle secondCircle = new Circle(8.0);
-        
-        System.out.println("\nFirst Circle:");
-        firstCircle.draw();
-        System.out.println("The first circle area is: " + firstCircle.area());
+        System.out.println("\nAverage measurement: " + volcano.average());
 
-        System.out.println("\nSecond Circle:");
-        secondCircle.draw();
-        System.out.println("The second circle area is: " + secondCircle.area());
-       
-       
-        
-       
-        
-        
-        
-        
+        int value = 1000;
+        System.out.println("\nMaximum measurement under " + value + ": " + volcano.maxUnder(value));
+
+        System.out.println("\nDeleting measurement at index 1:");
+        volcano.delete(1);
+        volcano.print();
+
+        System.out.println("\nDeleting all measurements:");
+        volcano.deleteAll();
+        volcano.print();
+
+        System.out.println("\nVolcano summary:");
+        System.out.println(volcano);
     }
 }
